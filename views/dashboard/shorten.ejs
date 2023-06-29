@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shorten Url</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/fonts.css" />
+</head>
+<body>
+    <main class="w-full h-screen grid grid-cols-[250px_auto] work-sans-font">
+        <section class="pt-[40px] flex flex-col pl-[20px] font-medium border-r border-black h-full">
+            <div class="flex items-center gap-[10px] pl-[20px]">
+                <img class="w-[40px]" src="/images/scissor.png" />
+                <p class="text-[26px]">Scissor</p>
+            </div>
+            <div class="mt-[50px] text-[20px] gap-[15px] flex flex-col font-normal">
+                <a href="/dashboard/shorten" class="px-[20px] py-[10px] bg-black inline-block text-white w-fit rounded-md cursor-pointer">Shorten Url</a>
+                <a href="/dashboard/custom-url" class="px-[20px] py-[10px] inline-block w-fit rounded-md cursor-pointer">Custom Url</a>
+                <a href="/dashboard/analytics" class="px-[20px] py-[10px] inline-block w-fit rounded-md cursor-pointer">Analytics</a>
+                <a href="/dashboard/link-history" class="px-[20px] py-[10px] inline-block w-fit rounded-md cursor-pointer">Link History</a>
+            </div>
+        </section>
+        <section class="pt-[40px] px-[40px]">
+            <p class="text-[32px] font-medium">Hi <%= firstName %>,</p>
+            <p class="text-[36px] text-center font-medium mt-[30px]">Generate a shorter Url for your website</p>
+            <div style="max-width: 800px;" class="px-[20px] mt-[20px] py-[20px] rounded-md border border-black shadow-lg w-full max-w-[400px] mx-auto">
+                <form action="" method="post">
+                    <div>
+                        <label class="text-[24px]">Your website Url: </label>
+                        <div class="flex">
+                            <% if (longLink) { %>
+                                <p class="w-full py-[20px] px-[20px] text-[18px] mt-[20px] border border-black rounded-md"> <%= longLink %> </p>
+                                <% } else {%>
+                                    <input name="originalUrl" placeholder="https://your-website.com/your-original-url" class="w-full py-[20px] px-[20px] text-[18px] mt-[20px] border border-black rounded-md" />
+                                    <button style="min-width: 150px; margin-left: 20px" class="bg-black py-[20px] px-[20px] mt-[20px] ml-[20px] rounded-md text-white">Create Link!</button>
+                                    <% } %>
+                        </div>
+                        <p style="color: red; margin-top: 5px;"><%= errorMessage %></p>
+                    </div>
+                    <% if (longLink) { %>
+                        <p class="text-[24px] mt-[20px]">Your brand new short link:</p>
+                        <div class="flex">
+                            <div class="w-full py-[20px] px-[20px] text-[18px] mt-[20px] border border-black rounded-md" style="margin-top: 20px;">
+                                <a class="text-blue-400 underline" href="<%= shortLink %>" id="copy-text" style=""><%= shortLink %></a>
+                            </div>
+                            <button id="copy-button" style="min-width: 150px; margin-left: 20px" class="bg-black py-[20px] px-[20px] mt-[20px] ml-[20px] rounded-md text-white">Copy</button>
+                        </div>
+                        <p class="text-[24px] mt-[20px]">Unique QR Code for your link: </p>
+                        <img style="margin-bottom: 20px;" src="<%= qrCode %>" />
+                        <a  href="/dashboard/shorten" class="bg-black py-[20px] px-[20px] mt-[20px] ml-[10px] rounded-md text-white"> Create New Link</a>
+
+                        <% } %>
+                </form>
+            </div>
+            <script>
+                const copyButton = document.querySelector("#copy-button")
+                const copyText = document.querySelector("#copy-text")
+        
+                copyButton.addEventListener("click", handleCopy);
+        
+                function handleCopy (e) {
+                    e.preventDefault();
+                    console.log("this button was clicked")
+                    const linkText = copyText.innerHTML;
+                    navigator.clipboard.writeText(linkText);
+                    copyButton.innerHTML = "Copied!"
+                    setTimeout(() => {
+                        copyButton.innerHTML = "Copy";
+                    }, 2000)
+        
+                }
+            </script>
+        </section>
+    </main>
+</body>
+</html>

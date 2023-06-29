@@ -1,0 +1,57 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login To Scissor</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/fonts.css" />
+</head>
+<body>
+    <main class="w-full h-screen grid grid-cols-[250px_auto] work-sans-font">
+        <section class="pt-[40px] flex flex-col pl-[20px] font-medium border-r border-black h-full">
+            <div class="flex items-center gap-[10px] pl-[20px]">
+                <img class="w-[40px]" src="/images/scissor.png" />
+                <p class="text-[26px]">Scissor</p>
+            </div>
+            <div class="mt-[50px] text-[20px] gap-[15px] flex flex-col font-normal">
+                <a href="/dashboard/shorten" class="px-[20px] py-[10px] inline-block w-fit rounded-md cursor-pointer">Shorten Url</a>
+                <a href="/dashboard/custom-url" class="px-[20px] py-[10px] inline-block w-fit rounded-md cursor-pointer">Custom Url</a>
+                <a href="/dashboard/analytics" class="px-[20px] py-[10px] inline-block w-fit rounded-md cursor-pointer text-white bg-black">Analytics</a>
+                <a href="/dashboard/link-history" class="px-[20px] py-[10px] inline-block w-fit rounded-md cursor-pointer ">Link History</a>
+            </div>
+        </section>
+        <section class="pt-[40px] px-[40px] h-full overflow-y-scroll">
+            <p class="text-[32px] font-medium">Hi <%= firstName %>,</p>
+            <p class="text-[36px] text-center font-medium mt-[30px]">Link Metrics</p>
+            <div class="w-full">
+                <table class="table-auto w-full  mt-[30px] border border-black border-collapse shadow-lg">
+                    <thead class="text-[18px] ">
+                        <th class=" py-[15px]">Shortened Url</th>
+                        <th class=" py-[15px]">Number of clicks</th>
+                        <th class=" py-[15px]">Last Click</th>
+
+                    </thead>
+                    <tbody>
+                        <% links.forEach((link)=> { %>
+                            
+                        <tr>
+                            <td class="border border-black px-[10px] py-[10px]"> <a class="text-blue-400 underline" href="<%= link.shortLink %>"><%= link.shortLink %></a> </td>
+                            <td class="border border-black px-[10px] py-[10px]"> <%= link.clicks %> </td>
+                            <% if (link.clicks > 0) { %>
+                                <td class="border border-black px-[10px] py-[10px]"> <%= link.updatedAt.toLocaleString("es-CL")  %> </td>
+                                <% } else {%>
+                                    <td class="border border-black px-[10px] py-[10px]"> - </td>
+                                    <% } %>
+                        </tr>
+
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

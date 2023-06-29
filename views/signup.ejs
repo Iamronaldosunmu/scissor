@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login To Scissor</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/fonts.css" />
+</head>
+<body>
+    <main class="w-full min-h-screen py-[20px] flex items-center justify-center">
+        <section class="flex flex-col work-sans-font items-center w-full px-[20px] relative bottom-[20px]">
+            <img src="/images/scissor.png" class="w-[100px]"/>
+            <h2 class="text-[32px] font-medium">Create An Account</h2>
+            <p class="text-[14px]"> Already have an Account? <a href="/login" class="font-bold">Log In</a></p>
+            <form method="post" action="" class="w-full max-w-[600px] flex flex-col gap-[15px]">
+                <div class="flex flex-col">
+                    <label class="text-[20px]">
+                        First Name
+                    </label>
+                    <input name="firstName" class="w-full border border-black rounded-[8px] px-[15px] py-[10px]"/>
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-[20px]">
+                        Last Name
+                    </label>
+                    <input name="lastName" class="w-full border border-black rounded-[8px] px-[15px] py-[10px]"/>
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-[20px]">
+                        Email
+                    </label>
+                    <input name="email" class="w-full border border-black rounded-[8px] px-[15px] py-[10px]"/>
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-[20px]">
+                        Password
+                    </label>
+                    <input name="password" type="password" class="w-full border border-black rounded-[8px] px-[15px] py-[10px]"/>
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-[20px]">
+                        Confirm Password
+                    </label>
+                    <input name="confirmPassword" type="password" class="w-full border border-black rounded-[8px] px-[15px] py-[10px]"/>
+                </div>
+                <p class="text-red-500 text-[14px] text-center"><%= errorMessage %></p> 
+                <button class="w-full bg-black rounded-[8px] px-[15px] py-[10px] text-white text-[20px] mt-[10px]"> Sign Up </button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
