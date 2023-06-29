@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tailwind:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
-    "dev": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css && node server.js"
+    "dev": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css && node server.js",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
