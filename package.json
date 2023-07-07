@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "set NODE_OPTIONS=--experimental-vm-modules && npx jest",
     "tailwind:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
     "dev": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css && node server.js",
     "start": "node server.js"
@@ -15,6 +15,7 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.1.4",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
@@ -29,11 +30,16 @@
     "passport-local": "^1.0.0",
     "postcss-cli": "^10.1.0",
     "qrcode": "^1.5.3",
-    "shortid": "^2.2.16"
+    "shortid": "^2.2.16",
+    "supertest": "^6.3.3"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.2",
     "autoprefixer": "^10.4.14",
+    "jest": "^29.6.1",
     "postcss": "^8.4.24",
-    "tailwindcss": "^3.3.2"
+    "tailwindcss": "^3.3.2",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.1.6"
   }
 }
